@@ -74,3 +74,73 @@ document.getElementById("flex-box-rps-div").appendChild(msgDiv);
 document.getElementById("flex-box-rps-div").appendChild(compDiv);
 
 }
+
+// project#4
+
+
+var allButton = document.getElementsByTagName("Button");
+let copyAllButton=[];
+for(let i=0;i< allButton.length;i++)
+{
+    copyAllButton.push(allButton[i].classList[1]);
+}
+
+console.log(copyAllButton);
+
+function buttonColor(selected)
+{
+    if(selected.value== 'red')
+    {
+        buttonRed();
+    }
+    else if(selected.value== 'green')
+    {
+        buttonGreen();
+    }
+    else if(selected.value== "reset")
+    {
+        buttonReset();
+    }
+    else if(selected.value== "random")
+    {
+        buttonRandom();
+    }
+}
+
+function buttonRed()
+{
+    for(let i=0;i< allButton.length; i++)
+    {
+        allButton[i].classList.remove(allButton[i].classList[1]);
+        allButton[i].classList.add("btn-danger");
+    }
+}
+
+function buttonGreen()
+{
+    for(let i=0;i<allButton.length;i++)
+    {
+        allButton[i].classList.remove(allButton[i].classList[1]);
+        allButton[i].classList.add("btn-success");
+    }
+    
+}
+function buttonReset()
+{
+    for(let i=0;i<allButton.length ;i++)
+    {
+        allButton[i].classList.remove(allButton[i].classList[1]);
+        allButton[i].classList.add(copyAllButton[i]);
+    }
+}
+
+function buttonRandom()
+{
+    let colors = ['btn-danger', 'btn-success','btn-warning','btn-primary'];
+    for(let i=0;i<allButton.length;i++)
+    {
+        let randomNo= Math.floor(Math.random()*4);
+        allButton[i].classList.remove(allButton[i].classList[1]);
+        allButton[i].classList.add(colors[randomNo]);
+    }
+}
